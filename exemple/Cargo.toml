@@ -8,6 +8,9 @@ build = "build.rs"
 bindgen = "0.63"
 cc = "1"
 
+[dependencies]
+cc = "1"
+
 
 
 

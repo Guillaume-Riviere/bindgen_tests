@@ -8,7 +8,7 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         .header("cpp/lib1.h")
-        //.generate_inline_functions(true)
+        .generate_inline_functions(true)
         .layout_tests(false)
         .clang_arg("-x").clang_arg("c++").clang_arg("-std=c++14")
         //.allowlist_function("lib1_.*")

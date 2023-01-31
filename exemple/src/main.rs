@@ -31,15 +31,17 @@ fn main() {
     // };
 
 
-    let y = Vector2{x:412.0, y:489.0};
+    let mut y = Vector2{x:412.0, y:489.0};
     let z = Vector2{x:2.0, y:89492.0};
 
     println!("{}, {}", y.x, y.y);
     println!("{}, {}", z.x, z.y);
 
-    let x = y.distanceTo(&z);
+    let _x = unsafe{ 
+        y.distanceTo(z);
+    };
 
-    println!("{}", x);
+    //println!("{}", x);
 
     println!("A");
 }

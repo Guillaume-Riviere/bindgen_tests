@@ -6,10 +6,100 @@ pub struct Vector2 {
     pub x: f64,
     pub y: f64,
 }
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector210distanceToES_"]
+    pub fn Vector2_distanceTo(this: *mut Vector2, pos: Vector2) -> f64;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector214vectorMovementEdd"]
+    pub fn Vector2_vectorMovement(this: *mut Vector2, plusx: f64, plusy: f64);
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector28midpointES_"]
+    pub fn Vector2_midpoint(this: *mut Vector2, pos: Vector2) -> Vector2;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector215percentDistanceES_d"]
+    pub fn Vector2_percentDistance(this: *mut Vector2, pos: Vector2, percentOfDistance: f64)
+        -> f64;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector2C1Edd"]
+    pub fn Vector2_Vector2(this: *mut Vector2, inx: f64, iny: f64);
+}
+impl Vector2 {
+    #[inline]
+    pub unsafe fn distanceTo(&mut self, pos: Vector2) -> f64 {
+        Vector2_distanceTo(self, pos)
+    }
+    #[inline]
+    pub unsafe fn vectorMovement(&mut self, plusx: f64, plusy: f64) {
+        Vector2_vectorMovement(self, plusx, plusy)
+    }
+    #[inline]
+    pub unsafe fn midpoint(&mut self, pos: Vector2) -> Vector2 {
+        Vector2_midpoint(self, pos)
+    }
+    #[inline]
+    pub unsafe fn percentDistance(&mut self, pos: Vector2, percentOfDistance: f64) -> f64 {
+        Vector2_percentDistance(self, pos, percentOfDistance)
+    }
+    #[inline]
+    pub unsafe fn new(inx: f64, iny: f64) -> Self {
+        let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+        Vector2_Vector2(__bindgen_tmp.as_mut_ptr(), inx, iny);
+        __bindgen_tmp.assume_init()
+    }
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct Vector3 {
     pub x: f64,
     pub y: f64,
     pub z: f64,
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector310distanceToES_"]
+    pub fn Vector3_distanceTo(this: *mut Vector3, pos: Vector3) -> f64;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector314vectorMovementEddd"]
+    pub fn Vector3_vectorMovement(this: *mut Vector3, plusx: f64, plusy: f64, plusz: f64);
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector38midpointES_"]
+    pub fn Vector3_midpoint(this: *mut Vector3, pos: Vector3) -> Vector3;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector315percentDistanceES_d"]
+    pub fn Vector3_percentDistance(this: *mut Vector3, pos: Vector3, percentOfDistance: f64)
+        -> f64;
+}
+extern "C" {
+    #[link_name = "\u{1}__ZN7Vector3C1Eddd"]
+    pub fn Vector3_Vector3(this: *mut Vector3, inx: f64, iny: f64, inz: f64);
+}
+impl Vector3 {
+    #[inline]
+    pub unsafe fn distanceTo(&mut self, pos: Vector3) -> f64 {
+        Vector3_distanceTo(self, pos)
+    }
+    #[inline]
+    pub unsafe fn vectorMovement(&mut self, plusx: f64, plusy: f64, plusz: f64) {
+        Vector3_vectorMovement(self, plusx, plusy, plusz)
+    }
+    #[inline]
+    pub unsafe fn midpoint(&mut self, pos: Vector3) -> Vector3 {
+        Vector3_midpoint(self, pos)
+    }
+    #[inline]
+    pub unsafe fn percentDistance(&mut self, pos: Vector3, percentOfDistance: f64) -> f64 {
+        Vector3_percentDistance(self, pos, percentOfDistance)
+    }
+    #[inline]
+    pub unsafe fn new(inx: f64, iny: f64, inz: f64) -> Self {
+        let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
+        Vector3_Vector3(__bindgen_tmp.as_mut_ptr(), inx, iny, inz);
+        __bindgen_tmp.assume_init()
+    }
 }
