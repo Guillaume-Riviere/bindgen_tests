@@ -1,31 +1,28 @@
 use std::env;
 use std::path::PathBuf;
 
+
+
 fn main() {
-    // cc::Build::new()
-    //     .file("src/lib.c")
-    //     .compile("lib");
+    println!("cargo:rerun-if-changed=wrapper.h");
+    let src = ["cpp/libf.cpp"];
+
+    cc::Build::new()
+        .cpp(true)
+        .files(src.iter())
+        .compile("mybar");
 
     let bindings = bindgen::Builder::default()
-        .header("cpp/lib1.h")
-        .generate_inline_functions(true)
+        .header("wrapper.h")
         .layout_tests(false)
-        .clang_arg("-x").clang_arg("c++").clang_arg("-std=c++14")
-        //.allowlist_function("lib1_.*")
-        .allowlist_file("cpp/lib1.h")
+        .clang_arg("-xc++")
+        //.clang_arg("-Ivendor/cpp")
+        // .allowlist_function("barfunc")
         .generate()
-        .unwrap();
-
+        .expect("Unable to generate bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     bindings
-        .write_to_file(std::path::PathBuf::from(out_path).join("bindings.rs"))
-        .unwrap();
-
-
-    // create a bindings.rs file at the root 
-    // of the crate with the contents of the bindings
-
-    let file = std::fs::File::create("src/bindings.rs").unwrap();
-    bindings.write(Box::new(file)).unwrap();
+        .write_to_file(out_path.join("bindings.rs"))
+        .expect("Couldn't write bindings!");
 }
