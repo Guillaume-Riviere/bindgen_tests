@@ -5,13 +5,19 @@
 #![allow(non_upper_case_globals)]
 #![allow(unaligned_references)]
 
-//include!("bindings.rs");
+include!("bindings.rs");
 
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+//include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+//include!(concat!("/src", "/bindings.rs"));
 
 fn main() {
 
     //let mut pos = Vector2{x:1.0, y:2.0};
+    unsafe {
+        let x = return_int();
+        println!("x = {}", x);
+    }
+    
 
     print!("Hello, world!");
     

@@ -25,4 +25,9 @@ fn main() {
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
+
+    // write bindings in src/bindings.rs
+    bindings.write_to_file("src/bindings.rs").expect("Couldn't write bindings!");
+
+
 }
