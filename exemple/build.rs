@@ -1,5 +1,6 @@
 use std::env;
 use std::path::PathBuf;
+use std::fs;
 
 
 
@@ -28,6 +29,4 @@ fn main() {
 
     // write bindings in src/bindings.rs
     bindings.write_to_file("src/bindings.rs").expect("Couldn't write bindings!");
-
-
 }
