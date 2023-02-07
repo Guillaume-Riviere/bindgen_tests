@@ -238,31 +238,6 @@ pub const OwnershipPolicy_NonOwning: OwnershipPolicy = 0;
 pub const OwnershipPolicy_Copy: OwnershipPolicy = 1;
 pub const OwnershipPolicy_Owning: OwnershipPolicy = 2;
 pub type OwnershipPolicy = ::std::os::raw::c_uint;
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct gen_type_info {
-    pub type_tag: u32,
-    pub c_type: *const ::std::os::raw::c_char,
-    pub bound_name: *const ::std::os::raw::c_char,
-    pub check: ::std::option::Option<unsafe extern "C" fn(p: *mut ::std::os::raw::c_void) -> bool>,
-    pub to_c: ::std::option::Option<
-        unsafe extern "C" fn(p: *mut ::std::os::raw::c_void, out: *mut ::std::os::raw::c_void),
-    >,
-    pub from_c: ::std::option::Option<
-        unsafe extern "C" fn(
-            obj: *mut ::std::os::raw::c_void,
-            policy: OwnershipPolicy,
-        ) -> ::std::os::raw::c_int,
-    >,
-}
-extern "C" {
-    #[link_name = "\u{1}__Z23gen_get_bound_type_infoj"]
-    pub fn gen_get_bound_type_info(type_tag: u32) -> *mut gen_type_info;
-}
-extern "C" {
-    #[link_name = "\u{1}__Z19gen_get_c_type_infoPKc"]
-    pub fn gen_get_c_type_info(type_: *const ::std::os::raw::c_char) -> *mut gen_type_info;
-}
 extern "C" {
     #[link_name = "\u{1}__Z10return_intv"]
     pub fn return_int() -> ::std::os::raw::c_int;
