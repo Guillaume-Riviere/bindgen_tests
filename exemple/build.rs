@@ -5,7 +5,7 @@ use std::path::PathBuf;
 
 fn main() {
     println!("cargo:rerun-if-changed=wrapper.h");
-    let src = ["cpp/libf.cpp"];
+    let src = ["cpp/liba.cpp"];
 
     cc::Build::new()
         .cpp(true)
@@ -15,7 +15,7 @@ fn main() {
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
         .layout_tests(false)
-        .clang_arg("-xc++")
+        .clang_arg("-xc++").clang_arg("-std=c++11").clang_arg("-Wc++11-extensions")
         //.clang_arg("-Ivendor/cpp")
         // .allowlist_function("barfunc")
         .generate()
