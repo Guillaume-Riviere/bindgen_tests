@@ -3,7 +3,6 @@
 enum OwnershipPolicy { NonOwning, Copy, Owning };
 
 
-
 // basic interoperability
 int return_int() ;
 float return_float() ;
