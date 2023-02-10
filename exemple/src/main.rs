@@ -33,7 +33,7 @@ fn extract_what_we_want()-> String{
                 if ip == "// basic interoperability"{
                     flag = true;
                 }
-                if ip == "// argument passing"{
+                if ip == "// type_tag based cast system"{
                     flag = false;
                 }
                 if flag{
@@ -78,8 +78,8 @@ fn main() {
 
 
     let mut file = OpenOptions::new().append(true).open("./cpp/fabgen.h").expect("cannot open file");
-   file.write_all(text.as_bytes()).expect("write failed");
-   println!("file append success");
+    file.write_all(text.as_bytes()).expect("write failed");
+    println!("file append success");
 
     /*for _char in text.chars() {
         if _char == '{'{
@@ -91,9 +91,9 @@ fn main() {
         }
     }*/
 
-/*
+
     //let mut pos = Vector2{x:1.0, y:2.0};
-    unsafe {
+    /*unsafe {
         let mut constant = 9;
         let mut reference = 9;
         let mut low = 3;
@@ -110,8 +110,8 @@ fn main() {
             println!("test_basic_type_exchange passed");
         
     }
+    */
+
     
-*/
-    print!("Hello, world!");
     
 }
